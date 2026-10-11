@@ -5,6 +5,14 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
+from analysis import (
+    create_frequency_table,
+    create_statistical_results,
+    create_subject_frequencies,
+    create_subset_analysis,
+)
+from load_data import create_tables, load_csv
+
 
 PROJECT_DIR = Path(__file__).resolve().parent
 DATABASE_PATH = PROJECT_DIR / "cell_counts.db"
@@ -207,15 +215,25 @@ def database_connection():
     return sqlite3.connect(database_uri, uri=True)
 
 
+def build_database():
+    """Build the database when a hosted dashboard starts without one."""
+
+    with sqlite3.connect(DATABASE_PATH) as connection:
+        connection.execute("PRAGMA foreign_keys = ON")
+        create_tables(connection)
+        load_csv(connection)
+        create_frequency_table(connection)
+        create_subject_frequencies(connection)
+        create_statistical_results(connection)
+        create_subset_analysis(connection)
+
+
 def validate_database():
-    """Confirm that the pipeline-created database is ready."""
+    """Confirm that the database is ready, building it when necessary."""
 
     if not DATABASE_PATH.exists():
-        st.error(
-            "The analysis database was not found. Run `make pipeline` "
-            "before starting the dashboard."
-        )
-        st.stop()
+        with st.spinner("Preparing the analysis database for the first launch..."):
+            build_database()
 
     with database_connection() as connection:
         available_tables = {
@@ -230,7 +248,7 @@ def validate_database():
     if missing_tables:
         missing_list = ", ".join(sorted(missing_tables))
         st.error(
-            "The database is incomplete. Run `make pipeline` again. "
+            "The database is incomplete. Run `make pipeline` and restart the dashboard. "
             f"Missing tables: {missing_list}."
         )
         st.stop()
