@@ -171,6 +171,9 @@ st.markdown(
             background: #102a43;
             color: white;
         }
+        button[data-baseweb="tab"][aria-selected="true"] p {
+            color: white !important;
+        }
         .question-card {
             min-height: 180px;
             padding: 1.15rem 1.2rem;

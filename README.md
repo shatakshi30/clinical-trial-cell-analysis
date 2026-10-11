@@ -8,7 +8,7 @@ melanoma cohort in an interactive Streamlit dashboard.
 
 ## Live dashboard
 
-The public dashboard link will be added here after deployment.
+[Open the interactive Immune Response Explorer](https://clinical-trial-cell-analysis-4tpyxhqzxxkppbzuiklt3y.streamlit.app/)
 
 > The local address `http://localhost:8501` is not a public dashboard link.
 
@@ -140,16 +140,17 @@ it does not by itself validate a predictive model for future patients.
 ## Part 4: Subset analysis
 
 The baseline subset includes melanoma PBMC samples collected at time 0 from
-patients treated with miraclib. It contains 656 samples and subjects.
+patients treated with miraclib. It contains 656 baseline samples representing
+656 distinct subjects.
 
-| Requested summary | Category | Count |
-|---|---|---:|
-| Samples by project | prj1 | 384 |
-| Samples by project | prj3 | 272 |
+| Summary              | Category | Count |
+|----------------------|---|---:|
+| Samples by project   | prj1 | 384 |
+| Samples by project   | prj3 | 272 |
 | Subjects by response | Non-responder | 325 |
 | Subjects by response | Responder | 331 |
-| Subjects by sex | Female | 312 |
-| Subjects by sex | Male | 344 |
+| Subjects by sex      | Female | 312 |
+| Subjects by sex      | Male | 344 |
 
 For melanoma male responders at time 0, across all sample and treatment types,
 the average raw B-cell count is:
