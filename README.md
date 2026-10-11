@@ -14,8 +14,9 @@ melanoma cohort in an interactive Streamlit dashboard.
 
 ## Quick start in GitHub Codespaces
 
-Open the repository in GitHub Codespaces, then run these commands from the
-repository root:
+Open the repository in GitHub Codespaces. The included development-container
+configuration provides Python 3.12. Then run these commands from the repository
+root:
 
 ```bash
 make setup
@@ -36,8 +37,9 @@ using the application.
 
 ## Run locally
 
-Python 3.9 or newer is recommended. Create and activate a virtual environment,
-then run the same Make targets:
+Python 3.12 is recommended to match the Codespaces and hosted-dashboard
+environments. Create and activate a virtual environment, then run the same Make
+targets:
 
 ```bash
 python -m venv .venv
@@ -54,6 +56,8 @@ The local dashboard will be available at
 
 ```text
 .
+├── .devcontainer/
+│   └── devcontainer.json # Codespaces Python 3.12 environment
 ├── .streamlit/
 │   └── config.toml       # Dashboard theme
 ├── .gitignore
