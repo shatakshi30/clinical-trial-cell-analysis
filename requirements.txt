@@ -1,0 +1,9 @@
+# Data handling
+pandas==2.3.3
+
+# Statistical analysis
+scipy==1.13.1
+
+# Interactive dashboard and visualization
+plotly==7.1.0
+streamlit==1.50.0

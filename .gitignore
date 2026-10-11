@@ -1,0 +1,14 @@
+# Python environments and cache files
+.venv/
+__pycache__/
+*.py[cod]
+
+# Generated pipeline output
+cell_counts.db
+
+# Local IDE and operating-system files
+.idea/
+.DS_Store
+
+# Never commit local Streamlit secrets
+.streamlit/secrets.toml
